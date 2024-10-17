@@ -1,9 +1,9 @@
-# Your Name Here
+# Aidan Mayo
 # UWYO COSC 1010
 # Submission Date
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# Lab Section: 12
+# Sources, people worked with, help given to: Liam
 # your
 # comments
 # here
@@ -62,7 +62,17 @@ ibmkdwkqmdkjesqnjiqpijixbwjhenmsrrlpcseliiajlvcaac
 zkdenxczyooloczcaahnkehbwimvieedpdlqfafbqvxvfmvabd
 """
 random_string = random_string.replace("\n","") #remove all newline characters
-print(len(random_string)) # Print out the size for reference 
+print(len(random_string)) # Print out the size for reference
+occurences = {}
+for character in random_string:
+    if character in occurences:
+        occurences[character] +=1
+    else:
+        occurences[character] = 1
+print(("Character occurs"))
+
+for character  in sorted(occurences):
+    print(f"{character}: {occurences[character]}")
 
 # Above is a string with 2500 characters.
 # Create a program that goes through and counts the occurrence of each character, excluding \n using a  dictionary
@@ -70,6 +80,7 @@ print(len(random_string)) # Print out the size for reference
 # Output which letter occurred the most 
 # Output which letter occurred the least 
 # Output what the percentage of the string each character is, again in alphabetical
+
 
 #Tips and trick:
 # You can iterate through strings like you would a list
@@ -86,10 +97,11 @@ print(len(random_string)) # Print out the size for reference
 # Output: each letter and its corresponding occurrence in alphabetical order
 
 print("*"*75)
+
 # Output which letter occurred the most 
 
-most_occurred = ""
-least_occurred = ""
+most_occurred = max(occurences, key = occurences.get)
+least_occurred = min(occurences, key = occurences.get)
 
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
@@ -98,3 +110,7 @@ print(f"The letter that occurred the most is {least_occurred}")
 print("*"*75)
 
 # Output what the percentage of the string each character is, again in alphabetical
+for character in sorted(occurences):
+    percentge = (occurences[character] / len(random_string)) *100
+
+    print(f"{character}: {percentge:.2f}%")
